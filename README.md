@@ -8,6 +8,8 @@
 - has_many :groups_users
 - has_many :tweets
 - has_many :messages
+  has_many :likes, dependent: :destroy
+  has_many :liked_tweets, through: :likes, source: :tweet
 
 ##  groupsテーブル
 |Column|Type|Options|
@@ -34,6 +36,36 @@
 |user_id|integer|null: false, foreign_key: true, add_index :tweets, :user_id|
 ### Association
 - belong_to :user
+- has_many :likes
+- has_many :liked_users, through: :likes, source: :user
+- has_many :messages 
+
+## likesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true, :user_id|
+|tweet_id|integer|null: false, foreign_key: true, :tweet_id|
+### Association
+- belong_to :user
+- belongs_to :tweet
+
+## liked-users
+|Column|Type|Options|
+|------|----|-------|
+|like_id|integer|null: false, foreign_key: true, :like_id|
+|user_id|integer|null: false, foreign_key: true, :user_id|
+### Association
+- belongs_to :like
+- belong_to :user
+
+## liked-tweets
+|Column|Type|Options|
+|------|----|-------|
+|like_id|integer|null: false, foreign_key: true, :like_id|
+|tweet_id|integer|null: false, foreign_key: true, :tweet_id|
+### Association
+- belongs_to :like
+- belong_to :tweet
 
 ## messagesテーブル
 |Column|Type|Options|
