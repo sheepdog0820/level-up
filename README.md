@@ -3,6 +3,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false, add_index :users, [:name, :email]|
+|image|string||
 ### Association
 - has_many :groups, through: :groups_users
 - has_many :groups_users

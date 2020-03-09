@@ -1,3 +1,18 @@
+.said{
+  width: 300px;
+  height: 100vh;
+  background-color: whitesmoke;
+  float: left;
+}
+
+.main{
+  width: calc(100vw - 300px);
+  height: 100vh;
+  background-color: cornflowerblue;
+  float: right;
+  
+}
+
 * {
   box-sizing: border-box;
 }
