@@ -8,9 +8,9 @@
 - has_many :groups_users
 - has_many :tweets
 - has_many :messages
-  has_many :likes, dependent: :destroy
-  has_many :liked_tweets, through: :likes, source: :tweet
-
+- has_many :likes, dependent: :destroy
+- has_many :liked_tweets, through: :likes, source: :tweet
+- acts_as_ordered_taggable_on :category
 ##  groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -39,6 +39,7 @@
 - has_many :likes
 - has_many :liked_users, through: :likes, source: :user
 - has_many :messages 
+- acts_as_ordered_taggable_on :category
 
 ## likesテーブル
 |Column|Type|Options|
