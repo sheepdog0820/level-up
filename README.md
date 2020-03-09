@@ -6,6 +6,7 @@
 ### Association
 - has_many :groups, through: :groups_users
 - has_many :groups_users
+- has_many :tweets
 - has_many :messages
 
 ##  groupsテーブル
@@ -15,7 +16,6 @@
 ### Association
 - has_many :users, through: :groups_users
 - has_many :groups_users
-- has_many :messages
 
 ## groups_usersテーブル
 |Column|Type|Options|
@@ -26,16 +26,25 @@
 - belong_to :user
 - belong_to :group
 
+## tweetsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|text|text||
+|image|string||
+|user_id|integer|null: false, foreign_key: true, add_index :tweets, :user_id|
+### Association
+- belong_to :user
+
 ## messagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |content|text||
 |image|string||
-|user_id|integer|null: false, foreign_key: true, add_index :messages, :user_id|
-|group_id|integer|null: false, foreign_key: true, add_index :messages, :group_id|
+|user_id|integer|null: false, foreign_key: true, :user_id|
+|tweet_id|integer|null: false, foreign_key: true, :tweet_id|
 ### Association
 - belongs_to :user
-- belongs_to :group
+- belongs_to :tweet
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
