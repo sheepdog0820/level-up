@@ -10,7 +10,16 @@
   height: 100vh;
   background-color: cornflowerblue;
   float: right;
-  
+}
+
+.tweets{
+  background-color: aquamarine;
+  width: 100px;
+  height: 100px;
+  &__user_image{
+    height: 50px;
+    width: 50px;
+  }
 }
 
 * {
